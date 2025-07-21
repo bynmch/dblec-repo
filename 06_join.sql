@@ -62,16 +62,60 @@ SELECT
 -- 컬럼명이 중복되는 게 싫음
 -- 2) using을 활용(컬럼명이 같을 때는 using 사용가능하고 별칭 쓰면 안된다.)
 -- using 뒤 소괄호 반드시 써야한다. 안쓰면 syntax 오류난다.
+-- 선생님 팁: 같아도 1)경우 사용.
 SELECT 
   FROM tbl_menu a
   JOIN tbl_category b USING (category_code);
--- 선생님 팁: 같아도 1)경우 사용.
 
 -- ----------------------------------------------------------- 
 -- outer join
 -- left나 right는 생략 불가.
 -- 메뉴로 할당되지 않는 카테고리를 다 보고싶을 때
+-- join 시에 기준이 될 테이블의 모든 행을 보고자 하는 경우 사용
+-- (매칭이 안되도 다 보고 싶을 때)
+-- left나 right는 join의 기준.
+-- join에서 나올 테이블 순서는 중요하나 resultset에 나올 컬럼의 순서는 임의로 판단한다.
+-- 
 
+-- 1) left join 
+SELECT
+       a.category_name
+     , b.menu_name  
+  FROM tbl_category a
+  LEFT JOIN tbl_menu b ON a.category_code = b.category_code;
+
+-- 2) right join
+SELECT
+       a.menu_name
+     , b.category_name
+  FROM tbl_menu a
+  RIGHT JOIN tbl_category b ON a.category_code = b.category_code;	    
+
+-- 만약에 다중 join(여러 테이블이 많이 join될 경우) 에서 outer join을 발생시키면
+-- 끝까지 outer join 을 유지해 주어야 의미가 있다.
+
+-- 3) cross join
+-- 두 테이블의 모든 매칭의 경우를 다 보여준다.
+-- 행*행 만큼 보여준다.
+-- nested loop방식으로 모두 매칭한다.
+SELECT
+       *
+  FROM tbl_menu
+ CROSS JOIN tbl_category;
+ 
+-- cross join 은 조건을 잘못 작성한 join일 경우 발생하게 되며 고의로
+-- cross join 을 일으키는 경우는 없다.
+
+-- 4) self join
+-- 나 자신과 조인
+-- 
+SELECT
+       a.category_name AS '상위카테고리'
+     , b.category_name AS '하위카테고리' 
+  FROM tbl_category a
+  JOIN tbl_category b ON (a.ref_category_code = b.category_code);
+
+-- 
 
 
 
