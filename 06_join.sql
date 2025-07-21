@@ -109,13 +109,13 @@ SELECT
 -- 4) self join
 -- 나 자신과 조인
 -- 
+SELECT * from tbl_category;
 SELECT
        a.category_name AS '상위카테고리'
      , b.category_name AS '하위카테고리' 
   FROM tbl_category a
   JOIN tbl_category b ON (a.ref_category_code = b.category_code);
-
--- 
+-- 초록키가 노란키를 참조하는 컬럼 관계가 테이블내에 있어야 한다.
 
 
 

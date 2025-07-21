@@ -17,7 +17,7 @@ SELECT
 SELECT
        DISTINCT category_code
   FROM tbl_menu;
-
+-- distinct 기준 컬럼에 대한 값은 같아도 다른 컬럼 값이 다른 데이터들이 사라질 수 있다.
 -- ----------------------------------------------------------  
 -- count 함수
 -- count (컬럼명 또는 *)  
@@ -26,8 +26,9 @@ SELECT
        COUNT(*)
   FROM tbl_category;
   
--- 2) 컬러명일 경우: 해당 컬럼의 컬럼값이 존재하는 경우만 센다.
+-- 2) 컬럼명일 경우: 해당 컬럼의 컬럼값이 존재하는 경우만 센다.
 -- null인 것 배고 카운트  
+
 SELECT
        COUNT(ref_category_code)
   FROM tbl_category;
@@ -45,6 +46,8 @@ SELECT
   FROM tbl_menu
  GROUP BY category_code;
 
+
+
 -- ----------------------------------------------------------
 -- having 절
 -- where절과 비슷하게 조건을 따짐.
@@ -54,7 +57,7 @@ SELECT
        SUM(menu_price)
      , category_code  
   FROM tbl_menu
-   GROUP BY category_code
+ GROUP BY category_code
 -- HAVING SUM(menu_price) >= 20000; 
 HAVING category_code BETWEEN 5 AND 9;
 
@@ -74,9 +77,13 @@ HAVING AVG(menu_price) > 12000
 -- 해석 순서: from - where - group by - having - select - order by
 -- where: 한 행씩 꺼내어... 조건식 수행
 
+
+
+
 -- ----------------------------------------------------------
 -- rollup(중간합계)
 -- group을 묶을 때 기준(하나의 컬럼 또는 여러 컬럼)별로 중간 합계 및 최종 합계를 산출 하는 키워드
+-- 카테고리 코드가 null 값들도 포함한 전체 합계
 SELECT
        SUM(menu_price) AS '합계'
      , category_code AS '카테고리코드'  
@@ -93,6 +100,4 @@ SELECT
   FROM tbl_menu
  GROUP BY menu_price, category_code
   WITH ROLLUP;
-
-
 

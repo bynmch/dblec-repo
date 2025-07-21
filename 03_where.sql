@@ -111,8 +111,8 @@ SELECT
   FROM tbl_menu
 -- WHERE menu_name LIKE '%밥%';  -- % 와일드 카드를 써서 Like문 작성 가능(와일드 카드: 기능이 있는 특수 기호)    
 -- WHERE menu_name LIKE '%밥'; -- 밥으로 끝나는 메뉴만
- WHERE menu_name LIKE '밥%';	--  밥으로 시작하는 메뉴만
- 
+-- WHERE menu_name LIKE '밥%';	--  밥으로 시작하는 메뉴만
+ WHERE menu_name LIKE '밥%';   -- 밥으로 시작하는 메뉴를 제외할 때 
 -- -----------------------------------------------
 -- IN연산자
 -- 카테고리가 '중식', '커피', '기타'인 메뉴 조회하기
