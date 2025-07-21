@@ -1,4 +1,4 @@
--- Limit result set에서 추출하기(데이터에서 일부 잘라내기 ex 게시판 페이지, 유튜브 동영상 보이는 갯수, ...)
+-- Limit ResultSet에서 추출하기(데이터에서 일부 잘라내기 ex 게시판 페이지, 유튜브 동영상 보이는 갯수, ...)
 SELECT
        menu_code
      , menu_name
