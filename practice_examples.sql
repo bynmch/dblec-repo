@@ -334,17 +334,19 @@ HAVING AVG(a.SALARY * (1 + IFNULL(a.BONUS,0))) >= 3000000;
 
 -- 급여 평균이 300만원 이상인 부유한 부서(서브쿼리)
 SELECT * FROM department;
+SELECT * FROM employee;
 
 SELECT
-       a.DEPT_TITLE
-  FROM department a
- WHERE a.DEPT_TITLE IN (SELECT b.DEPT_TITLE
-                          FROM department b
-                         RIGHT JOIN employee c ON b.DEPT_ID = c.DEPT_CODE)
-						       WHERE 							   
-								);
- 
+       
+  FROM (
+		 );
+SELECT
+       DEPT_CODE
+  FROM department
+ GROUP BY DEPT_CODE
+HAVING AVG(SALARY * (1 + IFNULL(BONUS, 0))) >= 3000000 ;
 
 -- 연봉(보너스 포함)가 3000만원 이상인 직원(사번, 직원명, 부서명)   
-   
-   
+
+
+

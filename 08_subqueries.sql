@@ -90,7 +90,7 @@ SELECT
   FROM tbl_menu
  GROUP BY category_code;
 
--- 먼저 뽑은 게 서브
+-- 먼저 뽑은 ResultSet이 서브쿼리를 통해 얻은 결과이다.
 
 -- 인라인 뷰에 함수가 있다면 반드시 별칭을 달아주고 그래야 메인 쿼리에서
 -- 해당 별칭으로 컬럼의 값을 뽑을 수 있다.
@@ -102,7 +102,67 @@ SELECT
           FROM tbl_menu
          GROUP BY category_code
         ) a;
- 
+
+-- -------------------------------------------------------------
+-- 가격이 가장 비싼 메뉴명 조회
+-- 1) 메뉴의 가장 비싼 가격을 먼저 조회
+SELECT
+       MAX(menu_price)
+  FROM tbl_menu;
+
+-- 2) 해당 가격의 메뉴 조회
+SELECT
+       menu_name
+--     , menu_price  
+  FROM tbl_menu
+ WHERE menu_price = (SELECT MAX(menu_price)
+                       FROM tbl_menu
+                    );   
+                            
+-- -------------------------------------------------------------
+-- 상관 서브쿼리
+-- 메인쿼리가 서브쿼리에 영향을 주는 것
+-- 메인쿼리에 의해 결과가 달라지는 서브쿼리를 상관서브쿼리라고 한다.
+-- 메뉴별 각 메뉴가 속한 카테고리의 평균보다 높은 가격의 메뉴들만 조회
+-- 선행: 카테고리의 평균, 후행: 메뉴별 - 평균 보다 큰가?
+-- 1) 카테고리가 10번인 경우 해당 카테고리에 속한 메뉴들의 평균
+SELECT
+       AVG(menu_price)
+  FROM tbl_menu
+ WHERE category_code = 10;
+
+-- 2) 메뉴별 카테고리를 보고 위의 서브쿼리를 활용한 상관 서브쿼리 작성
+SELECT
+       a.menu_code
+     , a.menu_name
+	  , a.menu_price
+	  , a.category_code
+	  , a.orderable_status  
+  FROM tbl_menu a
+ WHERE a.menu_price > (SELECT AVG(b.menu_price)
+                            FROM tbl_menu b
+                           WHERE b.category_code = a.category_code
+								 );
+
+-- 메인쿼리에 있는 값이 서브쿼리에서 사용된다.
+-- 서브쿼리 값도 매번 바뀐다.
+
+-- ---------------------------------------------------------------------
+-- exists
+-- 메뉴로 할당된 카테고리를 조회
+-- (서브쿼리에서?) 조회된 result set 의 행이 존재하면 true, 아니면 false이다.
+SELECT
+       a.category_name
+  FROM tbl_category a
+ WHERE EXISTS (SELECT menu_code
+                 FROM tbl_menu b
+                WHERE b.category_code = a.category_code
+              );
+
+-- 서브쿼리만 동작시킬 수 없다.
+
+SELECT * FROM tbl_category;
+SELECT * FROM tbl_menu;
 
 
 
@@ -116,6 +176,4 @@ SELECT
 
 
 
- 
- 
- 
+
