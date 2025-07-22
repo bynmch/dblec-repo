@@ -4,7 +4,7 @@
 -- insert
 -- 새로운 행을 추가하는 구문
 -- insert 시에는 컬럼을 작성할 수도 안할 수도 있다.
--- 이때 무시해도 되는 컬럼은 auto_increment가 달려있느 ㄴ컬럼이고
+-- 이때 무시해도 되는 컬럼은 auto_increment가 달려있는 컬럼이고
 -- 알아서 다음 번호를 작성해준다.
 SELECT * FROM tbl_menu;
 INSERT 

@@ -1,5 +1,5 @@
 -- DDL (Data Definition Language)
--- DB의 오브젝트들을 만들고 (create), 수정하고(alter), 삭제하는(drop) 것을 DDL이라고 한다.
+-- "DB의 오브젝트들을 만들고(create), 수정하고(alter), 삭제하는(drop) 것"을 DDL이라고 한다.
 -- DB의 오브젝트: 데이터를 저장하기 위한 데이터 구조(user, table, view, procedure, ...)
 
 CREATE TABLE tb1 (
@@ -61,11 +61,32 @@ ALTER TABLE tb2 MODIFY pk INT;
 
 -- primary key 제거
 ALTER TABLE tb2 DROP PRIMARY KEY;
+
+-- primary key 추가
+ALTER TABLE tb2 ADD PRIMARY KEY(pk);
+
 DESC tb2;
 
+-- -------------------------------------------------------
+-- truncate
+-- 테이블의 상태를 초기화
+-- delete 보다 훨씬 빠르고 깔끔하게 초기화
 
+CREATE TABLE if NOT EXISTS tb3 (
+    pk INT AUTO_INCREMENT,
+    fk INT,
+    col1 VARCHAR(255) CHECK(col1 IN ('Y', 'N')),
+    PRIMARY KEY(pk)
+);
 
+INSERT 
+  INTO tb3
+VALUES
+(
+  NULL, 1, 'N'
+);
 
+SELECT * FROM tb3;
 
-
-
+-- 단순 데이터 제거 + auto_increment 초기화 등 데이터 관련 모든 것을 초기화
+TRUNCATE TABLE tb3;
