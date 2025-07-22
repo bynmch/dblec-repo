@@ -1,6 +1,7 @@
 -- set operator
-
--- union
+-- join: vertical partition
+-- set operator: horizontal partition
+-- union (합 집합)
 SELECT
        menu_code
      , menu_name

@@ -57,10 +57,55 @@ UPDATE tbl_menu
                       FROM tbl_menu
                      WHERE menu_name = '멸치맛아이스크림'
                    );
-                   
 
+-- ------------------------------------------------------------                   
+-- delete
+-- soft delete(update), hard delete(delete)
+-- 주의: 지울 데이터를 where절로 조건처리 잘 할 것.
+DELETE
+  FROM tbl_menu
+ WHERE menu_code = 21;
 
+-- where 1 = 1(항상 true) , where 1 = 0(항상 false)
+ 
+DELETE
+  FROM tbl_menu
+ ORDER BY menu_price ASC
+ LIMIT 2;
 
+-- 낮은 가격 두 줄 삭제
 
+SELECT * FROM tbl_menu ORDER BY menu_price ASC;
+
+-- -----------------------------------------------------------
+-- replace (치환)
+-- 덮어씌우기, pk(primary key) 컬럼에 해당하는 값으로 기존과 새로움을 구분.
+-- 1) 기존에 있는 메뉴는 수정
+REPLACE
+   INTO tbl_menu
+VALUES
+(
+  17
+, '참기름소주'
+, 5000
+, 10
+, 'Y'
+);
+
+-- 중복되지 않고 비어있어도 안됨. 수정도 안됨. => primary key
+-- pk 이유? 행의 identity를 제공 -> 구분 가능한 한 행의 데이터만 존재해야 하기 때문에 pk가 존재한다.
+
+-- 100이 있으면 치환, 없으면 추가
+-- 2) 기존에 없는 메뉴는 추가
+REPLACE
+   INTO tbl_menu
+VALUES
+(
+  100
+, '참기름소주'
+, 5000
+, 10
+, 'Y'
+);
 
 

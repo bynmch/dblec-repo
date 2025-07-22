@@ -163,17 +163,3 @@ SELECT
 
 SELECT * FROM tbl_category;
 SELECT * FROM tbl_menu;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
