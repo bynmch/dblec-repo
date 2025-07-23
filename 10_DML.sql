@@ -26,6 +26,7 @@ VALUES
 DESC tbl_menu;
 
 -- auto increment: 나머지 컬럼값(행)을 추가해주면 알아서 추가해주는 값
+-- 오류가 나도....머시기
 SELECT * FROM tbl_menu ORDER BY 1 DESC;
 
 -- --------------------------------------------------------------------

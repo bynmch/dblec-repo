@@ -1,7 +1,9 @@
 -- JOIN
--- 관계를 맺은 두 개 이상의 테이블을 한 번에 조회하고 싶을 때
+-- 관계를 맺은 두 개 이상의 테이블을 한 번에 조회하고 싶다.
 
 -- 메뉴명과 카테고리명을 한 번에 보고싶다.
+
+
 SELECT * FROM tbl_menu;
 SELECT * FROM tbl_category;
 
@@ -16,7 +18,7 @@ SELECT
   JOIN tbl_category ON tbl_menu.category_code = tbl_category.category_code;
 -- on 뒤는 등호, 부등호 가능 일반적으로는 등호 조건식
 -- from에 가까울 수록 기준
--- join절은 아니지만코딩컨벤션을 지키기 위해
+-- join이 절은 아니지만 코딩컨벤션을 지키기 위해 띄어쓰기를 쓴다.
 -- on은 join을 위한 조건절로 반드시 관계있는 컬럼을 토대로 조건을 작성할 것.
 -- menu테이블의 카테고리 코드를 확인하고 거기서 카데고리 테이블의 카테고리 코드를 확인
 

@@ -63,6 +63,19 @@ SELECT
  -- '-'는 반대의 의미. asc는 null 먼저나옴. desc는 null 나중에 나옴.
  -- 마인드 맵, 정렬 - asc/desc, -숫자, -null, -별칭
 
- 
- 
+-- -----------------------------------------------------------------------------
+-- field를 활용함 order by
+SELECT
+       orderable_status
+     , FIELD(orderable_status, 'Y', 'N') AS '가능여부'
+	  , menu_name  
+  FROM tbl_menu
+-- ORDER BY FIELD(orderable_status, 'Y', 'N') DESC; 
+ ORDER BY 가능여부 DESC;
+
+
+
+
+
+
  

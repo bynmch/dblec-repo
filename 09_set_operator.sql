@@ -1,7 +1,9 @@
 -- set operator
+
 -- join: vertical partition
 -- set operator: horizontal partition
--- union (합 집합)
+
+-- union (합집합)
 SELECT
        menu_code
      , menu_name
@@ -39,6 +41,7 @@ SELECT
   FROM tbl_menu
  WHERE menu_price < 9000
  ORDER BY 3, 4;
+-- LEFT right
 
 -- intersect(교집합)
 -- 1) inner join 활용
