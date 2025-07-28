@@ -4,7 +4,7 @@
 -- 1. not null 제약조건
 -- 반드시 데이터가 존재해야 한다.
 -- 컬럼 레벨에서만 제약조건 부여 가능하다.
--- 3 tier 어쩌구... 꼭 필요.
+-- 3 tier 아키텍처
 -- 제약조건
 
 DROP TABLE if EXISTS user_notnull;
@@ -244,7 +244,6 @@ VALUES
 
 SELECT * FROM tbl_country;
 
-
 -- -----------------------------------------------------------------------
 SELECT 
     TABLE_NAME as '테이블명',
@@ -254,10 +253,4 @@ SELECT
 FROM information_schema.TABLES
 WHERE TABLE_SCHEMA = DATABASE()
     AND TABLE_TYPE = 'BASE TABLE';
-
-
-
-
-
-
 
