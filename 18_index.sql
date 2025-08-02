@@ -80,7 +80,7 @@ EXPLAIN SELECT * FROM phone WHERE phone_price = '1730000';
 -- 1) 별도의 저장공간 필요
 -- 2) 주기적으로 인덱스를 다시 업데이트 해야 한다.
 
--- 인덱스 최정화(업데이트)
+-- 인덱스 최적화(업데이트)
 OPTIMIZE TABLE phone;
 
 -- 인덱스 삭제

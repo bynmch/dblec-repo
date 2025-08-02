@@ -46,6 +46,7 @@ SELECT
    FROM tbl_menu;
    
 SELECT * FROM v_test;
+select
 
 -- view를 사용하는 목적
 -- 1) DBA가 일반 백엔드 개발자 각각에게 필요한 만큼의 정보를 제공하기 위해(접근제어)
