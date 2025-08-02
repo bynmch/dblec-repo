@@ -62,3 +62,25 @@ SELECT * FROM tbl_menu;
 -- 다음 번호 발생을 23번으로 하고싶다
 ALTER TABLE tbl_meny AUTO_INCREMENT = 23;
 
+
+-- ------------------------------------------------------------------------------------------
+-- ------------------------------------------------------------------------------------------
+
+START TRANSACTION; 	
+
+INSERT
+  INTO tbl_menu
+VALUES
+(
+  NULL, '바나나해장국', 8500
+, 4, 'Y'
+);
+
+UPDATE tbl_menu
+   SET menu_name = '수정된 메뉴'
+ WHERE menu_code = 5;
+ 
+DELETE from tbl_menu WHERE menu_code = 10;
+
+-- ROLLBACK;
+-- COMMIT;

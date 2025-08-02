@@ -46,15 +46,15 @@ SELECT * FROM tb2;
 -- alter
 -- 1) 컬럼 추가
 ALTER TABLE tb2 ADD col2 INT NOT NULL;
-DESC tb2;
+
 
 -- 2) 컬럼 삭제
 ALTER TABLE tb2 DROP col2;
-DESC tb2;
+
 
 -- 3) 컬럼 이름 및 컬럼 정의 변경
 ALTER TABLE tb2 CHANGE COLUMN fk change_fk INT NOT NULL;
-DESC tb2;
+
 
 -- auto_increment 제거
 ALTER TABLE tb2 MODIFY pk INT;
